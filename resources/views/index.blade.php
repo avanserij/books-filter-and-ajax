@@ -17,7 +17,7 @@
 <div id = "main">
     <div class="row ml-auto mr-3">
                             @foreach ($books as $book)
-                               <div class="col-sm-6 col-md-4">
+            <div class="col-sm-6 col-md-4">
                                         <img src="{{ asset('/images/'.$book->cover_image) }}" alt="{{ $book->title }}" class="img-fluid">
                                             <h2>{{ $book->title }}</h2>
                                                 <div id="myDiv" class="bookDetails" style="display: none;">
@@ -92,10 +92,9 @@
                 const bookTemplate = `
 <div class="row ml-auto mr-3">
                             <div class="col-sm-6 col-md-4">
-
                                     <div class="thumbnail">
-
                                         <div class="caption">
+
                                             <h3>{0}</h3>
 
                             <img src=http://127.0.0.1:8000/images/{4}  class="img-fluid"">
@@ -114,6 +113,7 @@
                                         </div>
                                     </div>
                                </div>
+</div>
 `
 
 

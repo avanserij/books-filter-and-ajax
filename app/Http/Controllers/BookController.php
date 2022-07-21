@@ -22,7 +22,9 @@ $authors = Author::All();
     }
 
 
+
     public function search(Request $request){
+
 
 
         $requestGenre = $request->genres;
@@ -32,8 +34,15 @@ $authors = Author::All();
            $search = $request->search;
         if ($request->filled('search'))
         {
-            $query->where('title', 'LIKE', "%{$search}%")
-                ->orWhere('description', 'LIKE', "%{$search}%");
+            $query->where(function($q) use ($search){
+                $q->where('title', 'LIKE', "%{$search}%")
+                    ->orWhere('description', 'LIKE', "%{$search}%");
+
+            });
+
+
+
+
         }
 
         if ($request->filled('genres'))
@@ -50,6 +59,10 @@ $authors = Author::All();
             });
         }
 
+      //  $books = Book::whereHas('genres', function ($q) use ($requestGenre) {
+      //              $q->whereIn('genres.id', $requestGenre);
+        //           })->get();
+
        //валидация
 
         $books = $query->get();
@@ -60,7 +73,6 @@ $authors = Author::All();
 
 
          }
-
 
 
 

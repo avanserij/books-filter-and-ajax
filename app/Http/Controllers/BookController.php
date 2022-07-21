@@ -13,7 +13,6 @@ class BookController extends Controller
     public function index()
     {
 
-
 $books = Book::All();
 $genres = Genre::All();
 $authors = Author::All();
@@ -25,8 +24,6 @@ $authors = Author::All();
 
     public function search(Request $request){
 
-
-     //  return response()->json(['data'=> $request->genres]); // передается array genre и id
 
         $requestGenre = $request->genres;
         $requestAuthor = $request->authors;
@@ -53,10 +50,6 @@ $authors = Author::All();
             });
         }
 
-      //  $books = Book::whereHas('genres', function ($q) use ($requestGenre) {
-      //              $q->whereIn('genres.id', $requestGenre);
-        //           })->get();
-
        //валидация
 
         $books = $query->get();
@@ -65,36 +58,10 @@ $authors = Author::All();
 
          return response()->json(['data'=> $books]);
 
-        //    return view('search', ([
 
-        //         'books' => $books
-
-       //]));
          }
 
 
 
-
-
-
-
-
-
-       // $books = Book::join('genres', 'books.id', '=', 'genres.id' ) -> get();
-
-
-
-      //  $users = Users::join('user_profiles','users.id','=','user_profiles.user_id')
-    //        ->pluck('userprofile.address','email');
-
-     //   $stocks = Stock::with('tags')
-      //      ->with(['images' => function ($query) {
-     //           $query->select(['id', 'url']);
-      //      }])
-   //         ->get();
-
-       // $genres = DB::table('genres')->select('name')->distinct()->get()->pluck()->sort();
-
-       //
 
 }
